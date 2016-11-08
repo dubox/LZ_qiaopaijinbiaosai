@@ -1,0 +1,174 @@
+/* --------------------------------------------------[Reset] */
+
+/* 公共样式 */
+			body , html,ul{margin: 0;padding: 0;}
+			body{background: url(../images/bg.png) top center no-repeat;}
+			li{list-style: none;}
+			
+body, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, p, blockquote, pre, form, fieldset, legend, button, input, textarea, th, td { margin: 0; padding: 0; }
+ul, ol { list-style: outside none; }
+fieldset, img { border: 0; }
+table { border-collapse: collapse; border-spacing: 0; }
+body, small, sup, sub, button, input, textarea, select { font: 12px/1 Arial, Helvetica, Verdana, SimSun, sans-serif; }
+body { line-height: 1.5; cursor:default;}
+h1, h2, h3, h4, h5, h6 { font-size: 100%; }
+address, cite, dfn, em, var { font-style: normal; }
+code, kbd, pre, samp { font-family: Consolas, "Lucida Console", Courier, SimSun, monospace; }
+sup, sub { position: relative; vertical-align: baseline; }
+sup { top: -3px; }
+sub { bottom: -3px; }
+button { padding: 5px 10px; overflow: visible; }
+h1{font-size: 18px;font-family: "微软雅黑";color: #2b2b2b;    font-weight:normal;text-align: center;width: 100%;padding: 8px 0 8px 0;margin-top: 5px;border-bottom: dashed 1px #888888;}
+
+.content{word-wrap:break-word;table-layout:fixed; word-break: break-all; overflow:hidden;}
+
+			.main{margin: 0 auto;padding-top:20px;width: 1000px;}
+			
+			/* banner样式 */
+			.banner{ margin-top: 0px;max-width: 100%;max-height: 250px;overflow: hidden;}
+			
+			
+			/* 导航样式 */
+			.nav{ margin-top: 20px; width: 100%;height: 50px; font-size: 18px;color:#fff;font-family: "微软雅黑";}
+			.nav li{float: left; width: 249px;height: 50px;background: rgb(67,153,118);text-align: center;line-height: 50px;border-left: solid 1px rgb(79,169,133);cursor: pointer;}
+			.nav .sel{background: rgb(79,169,133);}
+			
+			
+			
+			.con{margin-top: 20px;width: 100%;}
+			/* 左内容区样式 */
+			.left{float:left;width: 255px;}
+			.l_con{float:left;width: 254px;padding-bottom:20px;border: solid 1px rgb(186,222,210);border-right:0px ;background: rgb(222,241,235);}
+			.dl{width: 100%;height: 10px;background: url(../images/dl.png) right bottom no-repeat;}
+			.l_con ._list{width: 100%;padding: 0px 5px 10px 8px;}
+			.img_txt_li{float:left;border-bottom: dashed 1px #888888;padding: 8px 0 8px 0;}
+			.img_txt_li .txt{float:left;width: 135px;margin-left: 10px;}
+			 .txt span{font-size: 14px;font-family: "宋体";color: #2b2b2b;font-weight: bold;    word-wrap: break-word;    word-break: break-all;}
+			 .txt p{font-size: 12px;font-family:"宋体";color: #888;}
+			.img_txt_li .img{float:left;width:94px;height:73px;border: solid 1px rgb(186,222,210);overflow: hidden;}
+			.img_txt_li .img img{width: 100%;cursor: pointer;}
+			
+			
+			/* 右内容区样式 */
+			.right{float:left;width: 255px;}
+			.r_con{float:left;width: 254px;max-height:530px;border: solid 1px rgb(186,222,210);border-left:0px ;background: rgb(222,241,235);}
+			.dr{width: 100%;height: 10px;background: url(../images/dr.png) left bottom no-repeat;}
+			.login_div{width:244px;height: 190px;padding: 5px;}
+			.long_txt{padding: 10px;font-size: 12px;font-family: "宋体";color: #666;}
+			/*登录后*/
+			.login-frame {
+			    height: 190px;
+			    background: transparent url("../images/Loginbg.jpg") no-repeat scroll 0% 0%;
+			}
+			
+			.login-title {
+				height: 20px;
+			    line-height: 30px;
+			    padding: 0px 10px;
+			    text-align: right;
+			}
+			.userInfo {
+			    margin: 20px 0px 0px 30px;
+			    line-height: 2.5;
+			    list-style: outside none none;
+			}
+						.mr10 {
+			    margin-right: 10px;
+			}
+			.mt10 {
+			    margin-top: 10px;
+			}
+			.tr {
+			    text-align: right;
+			}
+			.logOut {
+				background: url(../images/icon.png) no-repeat;
+			    background-position: 0 -516px;
+			    display: inline-block;
+			    width: 70px;
+			    height: 26px;
+			    float: right;
+			    margin: 20px 20px auto;
+			    
+			}
+			
+			/* 中内容区样式 */
+			.center{float:left;width: 488px;min-height:600px;border: solid 1px rgb(186,222,210);}
+			.c_con{width: 465px;margin: 10px auto;}
+			.c_con ._list{width: 100%;}
+			.w_tt{background: rgb(222,241,235);}
+			.news_t{float:left;width: 100%;padding: 5px 0 5px 0;line-height: 16px;}
+			.li_s{float:left;width: 15px;height: 15px;background: url(../images/list_style.png) center center no-repeat;}
+			#_nList .news_t a,#_cnList .news_t a{float: left;width: 283px;display: block;}
+			.dtime{font-size: 12px;font-family: "宋体";color: #aaa;float: right;display: block;}
+			
+			/* 首页样式 */
+			.silder{width: 465px;height: 245px;border: solid 1px rgb(186,222,210);margin: 10px auto;}
+			.news_top{width: 465px;margin: 10px auto;border-bottom: dashed 1px #888888;padding-bottom: 8px;overflow-x: hidden;}
+			.news_top span{width:100%;height: 26px;display: block;}
+			
+			/* 新闻详情 */
+			.news_attr{font-size: 12px;font-family: "宋体";color: #888;margin: 10px auto;width: 100%;text-align: center;height: 20px;}
+			.news_attr span{float:left;text-align: center;overflow: hidden;height: 18px;}
+			.news_attr .bj{width: 143px;}
+			.news_attr .pt{width: 178px;}
+			.news_attr .su{width: 143px;}
+			.news_con{font-size: 14px;font-family: "宋体";color: #2B2B2B;margin-top: 20px;}
+			._link{background: #666666;}
+			
+			/* 新闻列表*/
+			._newsList ._list{min-height: 450px;}
+			
+			/* 图集列表 */
+			._imgList ._list{margin-top: 20px;width: 490px;height: 450px;}
+			._imgList ._list li{float: left;margin-right: 13px;cursor: pointer;}
+			._imgList ._list li .img_div{width: 144px;height: 114px;border: solid 1px rgb(186,222,210);}
+			._imgList ._list li .img_div img{width: 100%;height: 100%;}
+			._imgList ._list li .img_txt{width: 144px;height: 26px;line-height:26px;text-align:center;font-size: 12px;font-family: "宋体";color: #2B2B2B;font-weight: bold;}
+			
+			/* 赛事介绍 */
+			._matchDet .match_nav{width: 435px;height: 30px;border-bottom: solid 1px rgb(186,222,210);margin: 20px auto;padding-left: 30px;cursor: pointer;}
+			._matchDet .match_nav li{float: left; width: 130px;height: 29px;border: solid 1px rgb(186,222,210);margin-right: 5px;border-top-left-radius: 4px;border-top-right-radius: 4px;text-align: center;line-height: 29px;color: #888;}
+			._matchDet .match_nav li.curr{border-bottom: solid 1px #fff;color: #333;}
+			
+			
+			/*通用样式 */
+			.vmore{padding: 5px;float: right;    cursor: pointer;}
+			.t_font1{font-size: 14px;font-family: "宋体";color: #2b2b2b;}
+			.path{padding-left:10px;height: 30px;line-height: 30px;margin-top: 5px;width: 455px;background: rgb(222,241,235);}
+			.font12{font-size: 12px;font-family:"宋体";color: #888;}
+			._tt{padding-left:10px;height: 30px;line-height: 30px;margin-top: 5px;background: rgb(188,221,210);font-size: 18px;font-family: "微软雅黑";color: #297556;}
+			
+			/* 分页样式 */
+			.pager{ text-align:center; margin-top:20px; font-family:"宋体"; font-size:12px;width: 100%;}
+			.pager a,.pager span{ display:inline-block; margin:0 2px; font-size:12px; padding:0 8px; height:22px; line-height:22px; color:#616161; border:#dfdfdf solid 1px; background:#f3f3f3;}
+			.pager a{ cursor:pointer;}
+			.pager a.current{ color:#fff; cursor:text; background:rgb(188,221,210); border:rgb(222,241,235) solid 1px;}
+			.pager span.point{ background:none; border:none; padding:0;}
+						
+						
+			
+
+
+
+/* --------------------------------------------------脚部 */
+.footer{margin-top: 50px;width:100%;float: left;}
+#page_tail { width: 100%; overflow: hidden; text-align: center; min-width:960px; }
+#page_tail p.health { height: 26px; line-height: 26px; color: #d90208; }
+#page_tail p.health a:link,
+#page_tail p.health a:visited { color: #d90208; text-decoration: none; }
+#page_tail p.health a:hover { color: #d90208; text-decoration: underline; }
+#page_tail .bottom_cut { width: 100%; height: 1px; overflow: hidden; zoom: 1; border: 1px solid #d90208; background: #f46158; }
+#page_tail h4.bottom_navigation { height: 30px; line-height: 30px; border-bottom: 1px dotted #bfbfbf; color: #333333; }
+#page_tail h4.bottom_navigation a { padding: 0 8px; color: #333333; font-weight: normal; }
+#page_tail h4.bottom_navigation a:link,
+#page_tail h4.bottom_navigation a:visited { text-decoration: none; }
+#page_tail h4.bottom_navigation a:hover { text-decoration: underline; }
+#page_tail .copy { width: 960px; padding: 13px 0; overflow: hidden; margin: 0 auto; text-align: center; color: #999999; }
+
+#page_tail .copy a { color: #999999; }
+#page_tail .copy a:link,
+#page_tail .copy a:visited { text-decoration: none; }
+#page_tail .copy a:hover { text-decoration: underline; }
+
+/* --------------------------------------------------[å¹¿å‘Šè½®æ’­] */

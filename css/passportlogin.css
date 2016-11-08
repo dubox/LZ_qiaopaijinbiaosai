@@ -1,0 +1,339 @@
+@charset "utf-8";
+#loginForm { width:242px; height: 188px; border:#dddddd solid 1px; background: #fff;}
+.tab_sep {  float: left; margin-top: 20px; color: #262727; display:none; }
+.tabs { list-style: none; margin: 0; padding: 0px;width: 100%; height: 30px;line-height:30px;overflow: hidden;  background:#eee; border-bottom:#dddddd solid 1px;}
+.tab { float: left; height: 30px; line-height:30px; width:121px;  text-align:center; color: #888; font-size: 12px;font-family: "宋体"; text-decoration: none; white-space: nowrap; cursor: default;  }
+.tab_account{border-right:solid 1px #ddd ;width:120px;}
+.tabs .active,
+.tabs .active:hover { background:#f8f8f8; color: #2b2b2b; font-weight: bold;}
+.panel {width: 234px;margin: 0 auto; font-family: Verdana, Helvetica, Arial, "宋体", SimSun, sans-serif; }
+.panel ul { list-style: none; margin: 0px; padding: 0; }
+.panel ul li { margin-top:0px; height: 30px;padding: 8px 0 0px 0;}
+.account_num ul li span {float: left; display:inline-block; color: #262727; font-family:"宋体"; width:60px; height:25px; line-height:25px; font-size:12px;text-align: left;}
+.account_num ul li input {float: left; display:inline-block; width: 170px; padding:0px; height:25px; line-height:25px; border:#dddddd solid 1px; outline:none; }
+.account_num .login_tip { margin: 13px 0 0 5px;*margin:15px 0 0 10px;_margin:15px 0 0 10px; color: #2B2B2B; font-size:12px; float:left; display:inline; clear:both; width:120px;}
+.account_num .login_tip a {  color: #262727; text-decoration:none;}
+.btnArea{width:90px;height: 30px;float: left;margin-left: 10px;}
+.account_num input.btn_login { float: right; display: inline-block; width: 80px; height: 30px; margin:3px 5px 0 0;*margin:3px 5px 0 0;_margin:3px 5px 0 0; border: none;     background: url(http://bridgematch.ourgame.com/zhuanti/images/login_btn.png) no-repeat; outline: none; cursor:pointer;}/*http://newbridge.ourgame.com/zhuanti/*/
+.inValidate span.account_txt { float:left; display:inline; width:60px;}
+#vcode { float:left; display:inline; width:70px; padding:0px; height:25px; line-height:25px; border:#dddddd solid 1px; outline:none; margin-top:0px;}
+#return_state { float:left; display:inline; background:none; color: transparent; width:20px;*margin:-15px 0px 0 0;_margin:-15px 0px 0 0; }
+
+
+
+#account_label{ background-position:-300px -205px;}
+.account_num ul li span.account_pwd{ background-position:-300px -255px;}
+/* 主体 */
+body {
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	font-family: "宋体";
+}
+div.spaces{
+	font-size: 0px;
+	line-height: 0px;
+	margin: 0px;
+	padding: 0px;
+	clear: none;
+}
+
+
+/* 外壳 */
+div.loginBef {
+	width: 198px;
+	height: 193px;
+	padding-top: 0;
+	padding-left: 0;
+}
+div.loginAfter {
+	float:left;
+	width:180px;
+	height:180px;
+}
+
+
+/* 标题图 */
+div.imgTitleBef {
+
+
+}
+div.imgTitleAfter {
+	display:none;
+}
+div.imgTitle_txt{
+	color: #333;
+	text-align: center;
+	padding-bottom: 20px;
+	font-weight: bold;
+	text-indent: -999px;
+	display: block;
+	font-size: 0px;
+	line-height: 0px;
+	display:none;
+}
+
+
+/* 输入部分 */
+div.in {
+	clear:both;
+}
+div.in ul {
+	height:123px;
+	margin: 0px;
+	padding: 0px;
+	list-style-type: none;
+}
+div.in li{
+	clear:both;
+	color: #0C260D;
+	font-size: 12px;
+	width:175px;
+	height: 29px;
+	padding-bottom: 0;
+}
+.inServerMenu {
+	display:none;
+}
+.inAccount {
+}
+.inPassword {
+}
+.inValidate {
+
+}
+/* li内部结构 */
+div.txtName {
+	float: left;
+	width: 45px;
+	height: 20px;
+	padding-top: 4px;
+	color: #000;
+	display:none;
+}
+div.inputBoxM {
+	float:left;
+	width:143px;
+	height:23px;
+	overflow:hidden;
+}
+div.inputBoxS {
+	 width:175px;
+	 height:23px;
+	 overflow:hidden;
+	 position:relative;
+	 float:left;
+}
+div.inputBoxS span{ color:#ffffff; display:inline-block; float:right; height:30px; line-height:30px; margin-right:2px; position:absolute; top:0; right:0;}
+div.imgCode {
+	float:left;
+	display:inline;
+	position:relative;
+	width:;
+	height:32px;
+	margin-top:1px;
+	*margin:-15px 5px 0 0;_margin:-15px 5px 0 0;
+}
+div.imgCode img{position:absolute; top:0; left:0;}
+div.imgCode a{ display:inline-block;color:#ff3c00; line-height:16px; position:absolute; top:5px; right:0px; font-size: 12px;}
+/* 单个样式 */
+.styleServerMenuBox {
+}
+.styleInputBoxM {
+	width: 143px;
+	height: 23px;
+	font-size: 14px;
+	border:none;
+}
+.styleInputBoxS {
+	width: 143px;
+	height: 23px;
+	border:none;
+	padding:0;
+}
+*+html .styleInputBoxS{width: 139px;}
+* html .styleInputBoxS{width: 139px;}
+
+/* info */
+div.info {
+	width:180px;
+	clear:both;
+	height: 85px;
+}
+div.info ul {
+	margin: 0px;
+	padding: 0px;
+	list-style-type: none;
+}
+div.info li {
+	width: 180px;
+	padding-bottom: 12px;
+}
+.infoServerMenu {
+	display:none;
+}
+.infoBoxA {
+	display:none;
+}
+.infoBoxB {
+	display:none;
+}
+.infoBoxC {
+	display:none;
+}
+.infoBoxD {
+	color: #000;
+	font-size: 12px;
+	height: 18px;
+	padding-top: 6px;
+}
+.infoBoxD a{
+
+}
+.infoBoxD_s1 {
+	display:block;
+	width:118px;
+	height:17px;
+	background:url(http://ddt.ourgame.com/images/server1.gif) no-repeat 0 0;
+	text-decoration: none;
+	color: #000;
+	font-size: 12px;
+	text-align: center;
+	padding-top: 7px;
+	margin-right: auto;
+	margin-left: auto;
+	margin-top: 5px;
+}
+.infoBoxD_s2 {
+	display:block;
+	width:120px;
+	height:19px;
+	background:url(http://ddt.ourgame.com/images/server2.gif) no-repeat 0 0;
+	text-decoration: none;
+	color: #000;
+	font-size: 12px;
+	text-align: center;
+	padding-top: 7px;
+	margin-right: auto;
+	margin-left: auto;
+	margin-top: 5px;
+}
+.infoBoxE {
+	display:none;
+}
+.infoBox_txt{
+}
+
+
+
+/* 按钮 */
+div.btn {
+	width:150px;
+	clear:both;
+	padding-right: 15px;
+	padding-left: 15px;
+	height:24px;
+}
+div.btn_txt{
+	display:none;
+}
+div.btnEnter {
+	float:left;
+	height: 24px;
+	width: 63px;
+}
+div.btnEnter a {
+	display:block;
+	height: 24px;
+width: 63px;
+	background:url(http://auth.ourgame.com/webgame/default/bt.gif) no-repeat 0 0;
+}
+div.btnReg {
+	float:right;
+	height: 23px;
+width: 63px;
+}
+div.btnReg a{
+	display:block;
+	height: 23px;
+width: 63px;
+	background:url(http://auth.ourgame.com/webgame/default/reg.gif) no-repeat 0 0;
+}
+div.btnStart {
+	display:none;
+}
+div.btnExit {
+	float:left;
+	width:72px;
+	height:23px;
+
+}
+div.btnExit a{
+	display:block;
+	width:72px;
+	height:23px;
+	background:url(http://ddt.ourgame.com/images/ent.jpg) no-repeat 0 0;
+}
+div.btnPay {
+		float:right;
+	width:72px;
+	height:23px;
+}
+div.btnPay a{
+	display:block;
+	width:72px;
+	height:23px;
+	background:url(http://ddt.ourgame.com/images/coin.jpg) no-repeat 0 0;
+}
+
+
+/* 纯文字链 */
+div.txtWelcome {
+	clear:both;
+	color: #000;
+	font-size: 12px;
+	text-align: center;
+	height:17px;
+	padding-top: 3px;
+	width: 180px;
+}
+div.txtUrlTop {
+	font-size: 12px;
+	width: 198px;
+	overflow: hidden;
+	float: left;
+	clear: both;
+}
+div.txtUrlTop a {
+	font-size: 12px;
+	color: #ffffff;
+	text-decoration:none;
+}
+.txtUrlBottom {
+	display:none;
+}
+.login_item {
+	float: left;
+	width: 198px;
+	clear: both;
+	padding-top: 10px;
+	}
+.login_item input {
+	background-repeat: no-repeat;
+	height: 34px;
+	width: 132px;
+	text-indent: -999em;
+	display: block;
+	font-size: 12px;
+	outline: none;
+	cursor: pointer;
+	border: none;
+	color: #FFF;
+	background: url(http://sg.ourgame.com/images/log_but.jpg);
+	}
+	
+
+
+
+div.imgCode a{display: none;}

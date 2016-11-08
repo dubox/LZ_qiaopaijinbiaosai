@@ -1,0 +1,192 @@
+
+    
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>登录</title>
+		<link href="http1://passport.ourgame.com//webgame/51wq/passportlogin.css?timestamp=14004725236322" rel="stylesheet" type="text/css"/>
+		<link href="css/passportlogin.css?timestamp=14004725236322" rel="stylesheet" type="text/css"/>
+        <script type="text/javascript" src="http://passport.ourgame.com//js/our.js"></script>
+		<script type="text/javascript" src="http://passport.ourgame.com//js/jquery-1.4.2.min.js"></script>
+		<script type="text/javascript" src="http://passport.ourgame.com//scripts/en.js?v=97406"></script>
+        <script type="text/javascript">
+        function submit1() {
+            var $ = document.$;
+    		var account = $('#loginUserName').value.trim();
+    		var password = $('#loginPassword').value;
+            var $form = $('#loginForm');
+            var loginType = $form.getData('type').toUpperCase();
+    		
+    		
+    		if (account === "") {
+    			alert("请输入用户名");
+    			return false;
+    		}
+    		if (password === "") {
+    			alert("请输入密码");
+    			return false;
+    		}
+            if (account && password) {
+                if (loginType === 'OTHERS') {
+                    loginType = (/^1\d{10}$/.test(account)) ? 'MOBILE' : 'EMAIL';
+                }
+                $('#logintype').value = loginType;
+                //$form.action = action + '?';
+                console.log(account, loginType);
+                //submit();
+            }
+    		submit();
+    	}
+        
+        //刷新验证码
+       	function freshcode() {
+       		var myDate = new Date();
+       		var key = "webgame.login." + myDate.getTime() + Math.random();
+       		document.getElementById('verifyKey').value = key;
+       	    document.getElementById("imgcode").src = "http://captcha.ourgame.com/lzcaptcha?key=" + key + "&t=" + Math.random();
+       	}        
+        </script>
+	</head>
+	<body>
+		<form id="loginForm" name="loginForm" action="graphgamepassport/commonlogin.do" data-type="account" method="post">
+            <input type="hidden" id="nexturl" name="nexturl" value="http://51wq.ourgame.com/" />
+        	<input type="hidden" id="game" name="game" value="51wq" />
+        	<input type="hidden" id="info" name="info" value="" />
+        	<input type="hidden" id="parent" name="parent" value="y" />
+        	<input type="hidden" id="size" name="size" value="" />
+        	<input type="hidden" id="from" name="from" value="51wq"/>
+            <div class='widget_login tabpanel-account'>
+                <ul class="tabs">
+                    <li class="tab active tab_account" data-type="account">联众账号</li>
+                    <li class="tab_sep">|</li>
+                    <li class="tab tab_other" data-type="others">手机/邮箱</li>
+                </ul>
+                <div>
+                    <div class="account_num panel">
+                        <ul>
+                            <li>
+                                <span id="account_label">联众账号</span>
+                                <input id="loginUserName" type="text" name="account" value="" autocomplete="off" class="lz_txt_account">
+                            </li>
+                            <li>
+                                <span class='account_pwd'>密码</span>
+                                <input type="password" value="" id="loginPassword" name="password" class="lz_txt_pwd">
+                            </li>
+                            
+                            
+	                            <li class="inValidate">
+	                                <span class="account_txt">验证码</span>
+	                                <input id="vcode" name="vcode" type="text" class="styleInputBoxS" maxlength="4" />&nbsp;<span id="return_state"></span>
+	                                <div class="imgCode">
+	                                    <img id="imgcode" width="80" height="25" src="" border="0" onclick="javascript:freshcode();" />&nbsp;&nbsp;<a href="#" onclick="javascript:freshcode();return false">看不清换一张</a>
+	                                </div>
+	                                <input type="hidden" id="verifyKey" name="verifyKey" />
+	                            </li>                            
+                            
+                        </ul>
+                        <input type="hidden" name="logintype" id="logintype" value=""/>
+                        <div class="login_tip">
+                            <a href="http://id.ourgame.com/scenter/nasPwd!forgetPwd1.do" target="_blank" class="lz_zhmm">找回密码</a>
+                            <span>|</span>
+                            
+                                <a href="http://id.ourgame.com/regist.do?project=DATING" target="_blank" class="lz_zhmm">立即注册</a>
+                            
+                        </div>
+                        <div class="btnArea">
+                        	
+                            
+                            	<input type="button" class="btn_login btnRec" value="" onclick="javascript:vcode_state();"/>
+                            	<script type="text/javascript">
+                            		freshcode();
+                            	</script>
+                            
+                            <a href="http://quickid.ourgame.com/guest/autoRegister.do?game=51wq&third=204&nexturl=http://51wq.ourgame.com/%3Fchannelid%3D204" target="_top"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+		</form>
+	</body>
+</html>
+<script type="text/javascript">
+    //验证码
+    $("#vcode").focus(function(){
+        $("#return_state").text("");
+    });
+
+    //04.24
+    function vcode_state() {
+        var vcode_value = $("#vcode").val();;
+   	    var key_id = $("#verifyKey").val();
+   	    $.ajax({
+   	        type: "POST",
+   	        url: "http://passport.ourgame.com/checkVerifyCode.do",
+   	        data: "value="+vcode_value+"&key="+key_id,
+   	        success: function(data){
+   		                 if(data.R == "T"){
+   		                     $("#return_state").text("正确");
+   		                     submit1();
+   		                 } else if(data.R == "F"){
+   			                 alert("验证码错误，请修改");
+   		                     $("#return_state").text("错误");
+   			                 return false;
+   		                 } else if(data.R == "N"){
+                             alert("验证码错误，请修改");
+   		                     $("#return_state").text("错误");
+   			                 return false;
+   		                 }
+   	                }
+   	    });
+    }
+
+    var errInfo = "";
+        console.log();
+    if (errInfo == '0') {
+        alert("账号或密码错误!");
+   	} else if (errInfo == '5') {
+   		alert("对不起，您不能登录此页面，请30分钟后再试！");
+   	}else if (errInfo == '62') {
+   		alert("对不起，您不能登录此页面，请10分钟后再试！");
+   	}else if (errInfo == '6') {
+   		alert("验证码错误！");
+   	} else if (errInfo == '4') {
+   		alert("账号已绑定通行证，请用通行证登录！");
+   	} else if (errInfo == '3') {
+   		alert("通行证状态异常！");
+   	} else if (errInfo == '5') {
+   		alert("账号状态异常！");
+   	} else if (errInfo == '9') {
+   		alert("您的证件信息没有通过公安部验证，将被限制登录，为了更好的保护您的正当权益，您可以点击并登陆下面链接修改证件信息http://www.ourgame.com/srvcenter/id_lost/modi_personalid.asp");
+   	}
+
+   	
+(function(){
+    var $ = document.$;
+    var $form = $('#loginForm');
+    var $tabs = $('.tabs');
+    var $active = $tabs.find('.active');
+    var $accountLabel = $('#account_label');
+    $tabs.on('click:relay(li.tab)', function() {
+        if ($active) {
+            $active.removeClass('active');
+        }
+        $active = this.addClass('active');
+        $form.setData('type', $active.getData('type'));
+        $accountLabel.innerText = this.innerText;
+        return false;
+    });
+})();
+
+    
+    
+    
+
+    
+        
+    
+
+</script>

@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" id="ng-app" ng-app="qpzhuanti" class="ng-app:qpzhuanti">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>桥牌锦标赛</title>
+		
+		<link rel="stylesheet" href="css/list.css" />
+		<link rel="stylesheet" href="css/common.css" />
+		
+		<!--使angular 兼容ie6，7 -->
+		<!--[if lte IE 7]>
+			<script src="js/html5shiv.js"></script>
+			<script src="js/json2.js"></script>
+		<![endif]-->
+		<script src="js/jquery.1.7.2.min.js"></script>
+		<script src="js/common.js"></script>
+		
+	
+
+		<script src="js/jquery.img_silder.js"></script>
+		<script src="js/list.js"></script>
+		
+		
+<script>
+
+var projectName = 'zhuanti';
+var url = window.location.href;
+var	zhuanti = url.substr(url.indexOf(projectName)+projectName.length+1);
+if($.trim(zhuanti)==''){
+	zhuanti = 'nozhuanti';
+}
+        $(function(){
+        	
+        	
+           IndexLogin();
+           
+           
+           
+           
+		});
+		
+	
+	function IndexLogin(){
+		if (GetCookie("s1") == null || GetCookie("s1") == "") {
+			$('.login_div').html('<iframe border="0" frameborder="0" scrolling="no" src="http://passport.ourgame.com/graphgamepassport/login.do?from=bridgematch&game=bridgematch&parent=y&nexturl=http://bridgematch.ourgame.com/zhuanti/'
+			+zhuanti+
+			'" height="100%" width="100%"></iframe>');
+		}else{
+		    var s2 = DecodeCookie(GetCookie("s2"));
+	
+			var arS2 = s2.split("*@");
+		
+			var strUsername = arS2[0]; // 游戏账号
+			var strNickname = arS2[1]; // 昵称
+			var strCoin = arS2[5]; // 联众币
+		
+			if (SetSub(strUsername, 8) == undefined) {
+				var myUserName = "特殊字符";
+			} else {
+				var myUserName = SetSub(strUsername, 8);
+			}
+			if (SetSub(strNickname, 18) == undefined) {
+				var myNickname = "特殊字符";
+			} else {
+				var myNickname = SetSub(strNickname, 18);
+			}
+			$(".login_div").html('<div class="login-frame">'+
+								'<div class="login-title clearfix">'+
+									'<h2 class="fl"></h2>'+
+								'</div>'+
+								'<ul class="userInfo"><li>帐　号：'+strUsername+'</li><li>昵　称：'+myNickname+'</li><li>联众币：'+strCoin+'</li></ul>'+
+							'<a href="http://passport.ourgame.com/passportlogout.do?nexturl=http://bridgematch.ourgame.com/zhuanti/'
+			+zhuanti+
+			'" class="logOut"></a></div>');
+			//isSignUp();
+		}
+	}
+    </script>
+    
+    <!--1.2.0 以下 不支持$sce -->
+
+		<!--script src="http://cdn.bootcss.com/angular.js/1.2.13/angular.min.js"></script-->
+		<script src="js/angular1.1.5.min.js"></script>
+		<script src="js/data.js"></script>
+    
+</head>
+	<body >
+
+
+
+
+		<div class="main"  ng-controller="_main">
+			
+			
+			<div class="banner" ng-controller='getZhuantiImg'>
+				<img ng-src="{{path}}" width="1000" />
+			</div>
+			
+			<div class="nav">
+				
+				<ul>
+					<li ng-class="nav._index" ng-click="showCenter('_index');">首 页</li>
+					<li ng-class="nav._matchDet" ng-click="showCenter('_matchDet');">赛事介绍</li>
+					<li ng-class="nav._newsList" ng-click="showCenter('_newsList');">赛事新闻</li>
+					<li ng-class="nav._imgList" ng-click="showCenter('_imgList');">精彩图集</li>
+					
+				</ul>
+				
+			</div>
+			
+			<div class="con">
+				
+				
+				<div class="left">
+					
+					<div class="dl"></div>
+					
+					<div class="l_con">
+						
+						<div class="_tt" style="width: 244px;"> <span style="float: left; width: 80px;">精彩图集 </span> <img src="images/vmore.png" class="vmore" ng-click="showCenter('_imgList');" /></div>
+						<div class="_list" ng-controller="getTop5JingCaiTuJiList">
+							
+							<ul >
+								
+								<li class="img_txt_li" ng-repeat="item in list" ng-click="showCenter('_imgDet');to_getJingCaiTuJiDetail(item.id)">
+									
+									<div class="img">
+									<img ng-src="{{item.thumbPath}}" />
+									</div>
+									<div class="txt">
+										<span><a href="javascript:;">{{item.newsShortName}}</a></span>
+										<p>{{item.summary}}</p>
+									</div>
+								</li>
+								
+								
+								
+							</ul>
+							
+						</div>
+						
+					</div>
+					
+					
+					
+				</div>
+				
+				
+				<div class="center">
+					
+					
+					<div class="c_con _index" ng-style="show._index">
+						<!-- 轮播图-->
+						<div class="silder" id="silder"  ng-controller="getLunBoTuList">
+						  <ul class="silder_list" id="silder_list">
+						  	<!--为了ie6、7不报错  这里使用了 ng-class 代替 alt -->
+						    <li  ng-repeat="item in list"> <a href="{{item.url}}" target="_blank"><img ng-src="{{item.path}}" border="0" ng-class="item.description" width="465" height="245"> </a></li>
+						  </ul>
+						</div>
+						
+						<div class="news_top txt" ng-controller = "getTopNewsList" ng-bind-html-unsafe="content">
+							
+							
+							
+							<!--
+							<span></span>
+							<p></p>
+							-->
+						</div>
+						
+						<div class="_list" id="_cnList">
+							
+							<div class="_tt w_tt" style="width: 455px;"><span style="float: left; width: 80px;">赛事新闻 </span>  <img src="images/vmore.png" class="vmore" ng-click="showCenter('_newsList')" /></div>
+							
+							<ul ng-controller = "getTop5NewsList">
+								<li class="news_t t_font1" ng-repeat="item in list" ng-click="showNewsById(item.id);">
+									
+									<div class="li_s"></div>
+									<a ng-href="{{item.url}}" target="{{item.tar}}" >{{item.name}}</a>
+									<span class="dtime">{{item.publishTime}}</span>
+									
+								</li>
+								
+								
+							</ul>
+						</div>
+						
+						
+					</div>
+					
+					
+					<div class="c_con _newsList" ng-controller="getNewsList" ng-style="show._newsList">
+						<div class="path font12"><img src="images/path.png"  /> <span ng-click="showCenter('_index');"> <a href="javascript:;">网站首页</a> </span> > <span class="" style="color: #297556;">赛事新闻</span></div>
+						<div class="_list" id="_nList">
+						
+						
+							<ul>
+								<li class="news_t t_font1" ng-repeat="item in page.pList" ng-click="showNewsById(item.id);">
+									
+									<div class="li_s"></div>
+									<a href="{{item.url}}" target="{{item.tar}}" >{{item.name}}</a>
+									<span class="dtime">{{item.publishTime}}</span>
+									
+								</li>
+								
+								
+							</ul>
+						
+						</div>
+						
+						<div class="pager">
+						    <a href="javascript:;" class="prev"  ng-click="page.pPrev();" ng-style="p_prev"><i></i>上一页</a> 
+						                    
+						    <a ng-repeat="item in page.pNums" href="javascript:;"  ng-class="item._class" ng-click="page.pSetCurr(item.p);" ><i></i>{{item.p}}</a>  
+						              
+						    <a href="javascript:;" class="next" ng-click="page.pNext();" ng-style="p_next"><i></i>下一页</a> 
+						    <span class="point"> 共  {{page.pTotal}} 页</span>
+						</div>
+						
+						
+					</div>
+					
+					
+					<div class="c_con _newsDet" ng-style="show._newsDet"  ng-controller="getNewsDetail">
+						
+						
+						<div class="path font12"><img src="images/path.png"  /> <span ng-click="showCenter('_index');"> <a href="javascript:;">网站首页</a> </span> > <span class="" style="color: #297556;">赛事新闻</span></div>
+						<div class="news_content">
+							<h1>{{news.name}}</h1>
+							
+							<div class="news_attr"><span class="bj" style="float: left;">责任编辑：{{news.createEmployeeId}}</span><span class="pt" style="">发布时间：{{news.publishTime}}</span><span class="su" style="float: right;">来源：{{news.source}}</span></div>
+							
+							<div class="news_con content" ng-bind-html-unsafe="news.content">
+								
+								
+							</div>
+							
+						</div>
+						
+					</div>
+					
+					
+					<div class="c_con _imgList" ng-style="show._imgList" ng-controller="getJingCaiTuJiList">
+						<div class="path font12"><img src="images/path.png"  /> <span ng-click="showCenter('_index');"> <a href="javascript:;">网站首页</a> </span> > <span class="" style="color: #297556;">精彩图集</span></div>
+						
+						<div class="_list">
+							
+							<ul>
+								
+								<li class=""  ng-repeat="item in page.pList"  ng-click="showCenter('_imgDet');to_getJingCaiTuJiDetail(item.id)">
+									<div class="img_div"><img ng-src="{{item.thumbPath}}" /></div>
+									<div class="img_txt">{{item.newsShortName}}</div>
+								</li>
+								
+								
+							</ul>
+							
+						</div>
+						
+						
+						<div class="pager">
+						    <a href="javascript:;" class="prev"  ng-click="page.pPrev();" ><i></i>上一页</a> 
+						                    
+						    <a ng-repeat="item in page.pNums" href="javascript:;"  ng-class="item._class" ng-click="page.pSetCurr(item.p);" ><i></i>{{item.p}}</a>  
+						              
+						    <a href="javascript:;" class="next" ng-click="page.pNext();"><i></i>下一页</a> 
+						    <span class="point"> 共  {{page.pTotal}} 页</span>
+						</div>
+						
+					</div>
+					
+					<div class="c_con _imgDet" ng-style="show._imgDet" ng-controller="getJingCaiTuJiDetail">
+						<div class="path font12"><img src="images/path.png"  /> <span ng-click="showCenter('_index');"> <a href="javascript:;">网站首页</a> </span>> <span class="" style="color: #297556;">精彩图集</span></div>
+						<div class="news_content">
+							<h1>{{list[0].newsName}}</h1>
+							
+							<div class="news_attr"><span class="bj"  style="float: left;">责任编辑：{{list[0].authorName}}</span><span class="pt" style="">发布时间：{{list[0].publishTime}}</span><span class="su" style="float: right;">来源：{{list[0].source}}</span></div>
+
+							
+							<div class="news_con">
+								<div class="dWrap">
+										<div class="dPicList">
+											
+											<div id="dPicListBody" class="dBigList">
+												<span id="sLeftBtnA" class="sLeftBtnABan"></span>
+												<span id="sRightBtnA" class="sRightBtnA"></span>
+												
+														<ul class="ulBigPic">
+															
+															<li class="liSelected" ng-repeat="item in list">
+																<span class="sPic">
+																	<i class="iBigPic"><img alt="" ng-src="{{item.path}}"></i>
+																</span>
+																<span class="sSideBox">
+																	<span class="sTitle">{{item.description}}</span>
+																	
+																	
+																</span>
+															</li>	
+															
+															
+														
+															
+														</ul>
+														<div class="dSmallPicBox">
+															<div class="dSmallPic">
+																<ul class="ulSmallPic" style="width:2646px;left:0px" rel="stop">
+																	
+																	<li class=""  ng-repeat="item in list">
+																		<span class="sPic"><img alt="" ng-src="{{item.thumbPath}}" width="135" height="100"></span>
+																		<span class="sTitle">{{item.description}}</span>
+																	</li>
+																	
+																	
+																</ul>
+															</div>
+															<span id="sLeftBtnB" class="sLeftBtnBBan"></span>
+															<span id="sRightBtnB" class="sRightBtnB"></span>
+														</div>
+													
+											</div>
+									
+										</div>
+									</div>
+								
+								
+								
+								<div class="content" ng-bind-html-unsafe="content">
+							
+									
+									
+								</div>
+								
+								
+								
+							</div>
+							
+							
+						</div>
+					</div>
+				
+				
+					<div class="c_con _matchDet" ng-style="show._matchDet" ng-controller="getCompetitionIntroduceInfo">
+						<div class="path font12"><img src="images/path.png"  /> <span ng-click="showCenter('_index');"> <a href="javascript:;">网站首页</a> </span> > <span class="" style="color: #297556;">赛事介绍</span></div>
+						
+						<div class="match_nav">
+							
+							<ul>
+								
+								<li ng-click="showContent('competitionIntroduce')" class="{{competitionIntroduceCurr}}">赛事介绍</li>
+								<li ng-click="showContent('competitionSchedule')" ng-show="competitionScheduleSwitch" class="{{competitionScheduleCurr}}">比赛日程表</li>
+								<li ng-click="showContent('groupIntroduce')"  ng-show="groupIntroduceSwitch" class="{{groupIntroduceCurr}}">参赛队介绍</li>
+							</ul>
+							
+						</div>
+						<div class="news_con content" ng-bind-html-unsafe="content">
+							
+							
+							
+						</div>
+						
+					</div>
+				
+				
+				<!---->
+				</div>
+				
+				
+				<div class="right">
+					<div class="dr"></div>
+					<div class="r_con">
+						
+						
+						<div class="login_div">
+							
+							
+							
+							<script>
+				//document.write();
+					</script>
+							
+						</div>
+						
+						<div class="_tt" style="width: 244px;"> <span style="float: left; width: 80px;">赛事介绍</span>  <img src="images/vmore.png" class="vmore" ng-click="showCenter('_matchDet');" /></div>
+						<div class="long_txt content" ng-controller="getCompetitionJianJie" ng-bind="content">
+							
+							
+						</div>
+					</div>
+				</div>
+				
+				
+			</div>
+			
+			
+		
+			
+		</div>
+
+<div class="footer">
+			
+			
+			
+			
+			<div id="page_tail" style="padding-top: 30px;">
+  <p class="health">抵制不良游戏&nbsp;&nbsp;拒绝盗版游戏&nbsp;&nbsp;注意自我保护&nbsp;&nbsp;谨防受骗上当&nbsp;&nbsp;适度游戏益脑&nbsp;&nbsp;沉迷游戏伤身&nbsp;&nbsp;合理安排时间&nbsp;&nbsp;享受健康生活 --《<a href="http://www.ourgame.com/about/post.html" target="_blank">健康游戏忠告</a>》</p>
+  <div class="bottom_cut"></div>
+
+  <h4 class="bottom_navigation">
+    <a href="http://www.ourgame.com/about/glabout.html" target="_blank">联众简介</a><span>|</span>
+    <a href="http://www.ourgame.com/about/friends.html" target="_blank">合作伙伴</a><span>|</span>
+    <a href="http://www.ourgame.com/srvcenter/agreement/agreement.html" target="_blank">服务条款</a><span>|</span>
+    <a href="http://www.ourgame.com/about/contact.html" target="_blank">联系我们</a><span>|</span>
+	<a href="http://ir.ourgame.com/en/ir/info/pros.html" target="_blank">Investor Relations</a><span>|</span>
+     <a href="http://hr.ourgame.com/">招聘信息</a><span>|</span>
+<!--    <a href="http://www.ourgame.com/advertisement/index.htm" target="_blank">广告服务</a><span>|</span> -->
+    <a href="http://www.ourgame.com/about/link.html" target="_blank">友情链接</a>
+  </h4>
+  <div class="copy"><div style=" margin: 0 10px 20px 10px;">游戏中使用到的游戏币、门票等均为游戏道具，不具有任何财产性功能，只限用户本人在游戏中使用。本公司对于用户所拥有的游戏币、门票不提供任何形式的官方回购、<br>直接或变相兑换现金或实物等服务及相关功能。本公司严禁用户之间在游戏中及线下进行任何相互叫卖、转让游戏币等行为，如一经查出则永久封杀，账户清零。</div>
+  通用网址：联众世界　|　24小时客户服务热线：（029）87669595(纠纷处理)<br>
+  <a href="http://www.ourgame.com/about/netxkz.html" target="_blank">网络文化经营许可证　京网文[2015]0514-194号</a>  |  <a href="http://www.ourgame.com/about/icp.html" target="_blank">增值电信业务经营许可证B2-20090243号</a><br>
+  中国计算机信息网络国际联网单位编号：11010502017837　|　网站备案号: 京ICP备09074391号-2  |  京ICP证080029号<br>
+  批准文号：科技与数字[2013]20号　|　ISBN号：ISBN 978-7-89989-583-2<br>
+  北京联众互动网络股份有限公司版权所有©2014　|　北京联通提供网络带宽<br><br>
+    <img src="http://www.ourgame.com/new/images/copy.png" usemap="#Map">
+    <map name="Map">
+      <area shape="rect" coords="0,-8,157,53" href="http://counter.ourgame.com/CounterPage.ashx?id=4160&amp;d=index_mmpp" target="_blank">
+      <area shape="rect" coords="157,0,313,52" href="http://fzp.bjhd.gov.cn/tabid/179/Default.aspx" target="_blank">
+      <!-- <area shape="rect" coords="313,-9,467,51" href="http://www.hd315.gov.cn/beian/view.asp?bianhao=0102000102400023" target="_blank"> -->
+    </map>
+
+
+  </div>
+
+
+</div>
+			
+		</div>
+
+
+
+
+
+
+
+
+	</body>
+</html>
